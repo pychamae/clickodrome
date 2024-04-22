@@ -1,4 +1,4 @@
-NAME =			clickodrome
+NAME =			Clickodrome 
 
 SRC =			vector/main.c			\
 			vector/clear.c			\
