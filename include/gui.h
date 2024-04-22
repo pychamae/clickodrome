@@ -10,8 +10,8 @@
 typedef struct		s_gui
 {
   const char		*conf_file;
-  t_vector		components;
-  t_vector		divs;
+  t_vector		*components;
+  t_vector		*divs;
 }			t_gui;
 
 t_gui			*efnew_gui(const char			*file);

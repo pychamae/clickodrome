@@ -11,11 +11,11 @@ typedef struct		s_div
   const char		*name;
   t_bunny_position	pos;  // pos top left
   t_bunny_size		size;
-  t_vector		labels;
-  t_vector		buttons;
-  t_vector		text_boxes;
-  t_vector		pictures;
-  t_vector		timer;
+  t_vector		*labels;
+  t_vector		*buttons;
+  t_vector		*text_boxes;
+  t_vector		*pictures;
+  t_vector		*timer;
 }			t_div;
 
 t_div			*efnew_div(const char			*name,
