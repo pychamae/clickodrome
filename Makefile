@@ -44,7 +44,6 @@ re: fclean all
 
 test: fclean
 			cd test/vector_test/ ; make report
-			rm -f *.gcov
 
 tree: fclean
 			tree
