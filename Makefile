@@ -1,4 +1,4 @@
-NAME =			test
+NAME =			Clickodrome
 
 SRC =			vector/main.c			\
 			vector/clear.c			\
@@ -21,23 +21,30 @@ CC =			gcc
 
 FLAGS =			-Wall -Wextra -g
 
-LDFLAGS =		-L./ -ldprintf -lvsscanf
+LDFLAGS =		-L./
 
 all:$(NAME)
 
 $(NAME):$(OBJS)
-			$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
+			$(CC) $(OBJS) -O0 --coverage $(LDFLAGS) -o $(NAME)
 .c.o:
-			$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
+			$(CC) $(FLAGS) -O0 --coverage $(INCLUDE) -c $< -o $@
 ar:$(OBJS)
 			ar rc $(NAME).a $(OBJS)
 g:
 			gdb --arg ./$(NAME)
 clean:
-			rm -f *.c *~ vector/*.o vector/*.c~ include/*.h~
+			rm -f $(shell find ./ -name "*.o")
+			rm -f $(shell find ./ -name "*~")
+			rm -f $(shell find ./ -name "*.gcda")
+			rm -f $(shell find ./ -name "*.gcno")
 fclean: clean
 			rm -f $(NAME)
 re: fclean all
+
+test: fclean
+			cd test/vector_test/ ; make report
+			rm -f *.gcov
 
 tree: fclean
 			tree

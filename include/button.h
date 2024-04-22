@@ -10,6 +10,7 @@ typedef struct	        s_button
   const char		*text;
   t_bunny_color		*font_color;
   t_bunny_color		*bg;
+  t_vector		*functions;
 }			t_button;
 
 t_button		*efnew_button(t_bunny_position		pos,

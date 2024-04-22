@@ -1,4 +1,4 @@
-#include        "dprintf.h"
+#include	<stdio.h>
 #include        "vector.h"
 #include        <stdlib.h>
 #include        <string.h>
@@ -21,32 +21,32 @@ int main(void)
     i = 0;
     while (i < test->data_count)
         {
-            stu_dprintf(1, "Elem n°%d : %d(/%d)\n", i, *efvector_at(test, i, int), test->data_count);
+            dprintf(1, "Elem n°%d : %d(/%d)\n", i, *efvector_at(test, i, int), test->data_count);
             if ((i + 1) != *efvector_at(test, i, int))
-                stu_dprintf(1, "\nErreur !!\n");
+                dprintf(1, "\nErreur !!\n");
             i += 1;
         }
     efvector_pop_back(test);
     i = 0;
     while (i < test->data_count)
         {
-            stu_dprintf(1, "Elem n°%d : %d(/%d)\n", i, *efvector_at(test, i, int), test->data_count);
+            dprintf(1, "Elem n°%d : %d(/%d)\n", i, *efvector_at(test, i, int), test->data_count);
             if ((i + 1) != *efvector_at(test, i, int))
-                stu_dprintf(1, "\nErreur !!\n");
+                dprintf(1, "\nErreur !!\n");
             i += 1;
         }
     test_projection = efvector_view(test, 5, 4);
     i = 0;
     while (i < test_projection->data_count)
         {
-            stu_dprintf(1, "projection n°%d : %d(/%d)\n",
+            dprintf(1, "projection n°%d : %d(/%d)\n",
                         i, *efvector_at(test_projection, i, int), test->data_count);
             if ((i + 1) != *efvector_at(test, i, int))
-                stu_dprintf(1, "\nErreur !!\n");
+                dprintf(1, "\nErreur !!\n");
             i += 1;
         }
-    stu_dprintf(1, "Projection supprimé : %d\n", efvector_delete(test_projection));
-    stu_dprintf(1, "test supprimé : %d\n", efvector_delete(test));
+    dprintf(1, "Projection supprimé : %d\n", efvector_delete(test_projection));
+    dprintf(1, "test supprimé : %d\n", efvector_delete(test));
     */
     t_vector            *test;
     t_vector            *colum1;
@@ -88,7 +88,7 @@ int main(void)
         {
             for (int x = 0; x < 3; ++x)
                 {
-                    stu_dprintf(1, "%s", efvector_at(efvector_at(test, x, t_vector), y * 10, char));
+                    dprintf(1, "%s", efvector_at(efvector_at(test, x, t_vector), y * 10, char));
                     if (x + 1 != 3)
                         write(1, ",", 1);
                 }

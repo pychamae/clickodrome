@@ -10,7 +10,6 @@ typedef struct	        s_label
   const char		*text;
   t_bunny_color		*font_color;
   t_bunny_color		*bg;
-  t_vector		*functions;
 }			t_label;
 
 t_label			*efnew_label(t_bunny_position	pos,

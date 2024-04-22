@@ -1,0 +1,60 @@
+[
+  divName = "div1"
+  pos = 0, 0
+  size = 100, 100
+  {components
+    [
+      type = "button"
+      pos = 0, 0
+      size = 10, 10
+      name = "button1"
+      text = "Press ME !"
+      font_color = 255, 255, 255
+      bg = 0, 0, 0
+      functions = "send.so", "write.so"
+    ]
+  }
+]
+,
+[
+  divName = "div2"
+  pos = 100, 0
+  size = 100, 100
+  {components
+    [
+      type = "label"
+      pos = 0, 0
+      size = 10, 10
+      name = "label1"
+      text = "Je suis un label"
+      font_color = 0, 0, 0
+      bg = 0, 0, 0
+    ]
+    ,
+    [
+      type = "text_box"
+      pos = 50, 50
+      size = 10, 20
+      name = "text_box1"
+      text = "Write here to comment !"
+      font_color = 255, 255, 255
+      bg = 0, 0, 0
+      functions = "comment.so"
+    ]
+    ,
+    [
+      type = "picture"
+      name = "picture1"
+      pos = 0, 50
+      size = 50, 50
+      filename = "bobo.png"
+    ]
+    ,
+    [
+      type = "timer"
+      name = "timer1"
+      delay = 10 ' determine unit
+      function = "refresh.so"
+    ]
+  }
+]
