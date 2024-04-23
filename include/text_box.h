@@ -18,7 +18,8 @@ t_text_box		*efnew_text_box(t_bunny_position	pos,
 					const char		*name,
 					const char		*text,
 					t_bunny_color		*font_color,
-					t_bunny_color		*bg);
+					t_bunny_color		*bg,
+					t_vector		*functions);
 void			efdelete_text_box(t_text_box		*text_box);
 
 

@@ -18,7 +18,8 @@ t_button		*efnew_button(t_bunny_position		pos,
 				      const char		*name,
 				      const char		*text,
 				      t_bunny_color		*font_color,
-				      t_bunny_color		*bg);
+				      t_bunny_color		*bg,
+				      t_vector			*function);
 void			efdelete_button(t_button		*button);
 
 

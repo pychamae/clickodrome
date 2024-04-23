@@ -10,8 +10,7 @@ typedef struct	        s_timer
 
 t_timer		*efnew_timer(const char		*name,
 			     const char		*text,
-			     t_bunny_color		*font_color,
-			     t_bunny_color		*bg);
+			     t_vector		*functions);
 void			efdelete_timer(t_timer		*timer);
 
 
