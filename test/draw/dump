@@ -1,0 +1,88 @@
+rm -f main.o ../../display/blit.o ../../display/draw_rectangle.o ../../display/get_npos.o ../../display/get_ratio.o ../../display/get_value.o ../../display/set_pixel.o
+rm -f test_vector
+gcc -Wall -Wextra -g -O0 --coverage -I./../../include -c main.c -o main.o
+gcc -Wall -Wextra -g -O0 --coverage -I./../../include -c ../../display/blit.c -o ../../display/blit.o
+../../display/blit.c:4:37: error: unknown type name ‘t_blit’
+    4 |                                     t_blit                      *blit,
+      |                                     ^~~~~~
+../../display/blit.c: In function ‘blit’:
+../../display/blit.c:82:3: error: unknown type name ‘t_blit’; use ‘struct’ keyword to refer to the type
+   82 |   t_blit                blit;
+      |   ^~~~~~
+      |   struct 
+../../display/blit.c:90:3: warning: implicit declaration of function ‘init_struct’ [-Wimplicit-function-declaration]
+   90 |   init_struct(pos, &blit, src);
+      |   ^~~~~~~~~~~
+../../display/blit.c:95:32: error: request for member ‘size_dest’ in something not a structure or union
+   95 |       ratio = get_ratio(0, blit.size_dest.y, blit.target_pos.y);
+      |                                ^
+../../display/blit.c:95:50: error: request for member ‘target_pos’ in something not a structure or union
+   95 |       ratio = get_ratio(0, blit.size_dest.y, blit.target_pos.y);
+      |                                                  ^
+../../display/blit.c:96:15: error: request for member ‘is_y_reverse’ in something not a structure or union
+   96 |       if (blit.is_y_reverse)
+      |               ^
+../../display/blit.c:98:11: error: request for member ‘src_pos’ in something not a structure or union
+   98 |       blit.src_pos.y = get_value(0, src->clipable.clip_height, ratio);
+      |           ^
+../../display/blit.c:99:11: error: request for member ‘src_pos’ in something not a structure or union
+   99 |       blit.src_pos.y += src->clipable.clip_y_position;
+      |           ^
+../../display/blit.c:103:36: error: request for member ‘size_dest’ in something not a structure or union
+  103 |           ratio = get_ratio(0, blit.size_dest.x, blit.target_pos.x);
+      |                                    ^
+../../display/blit.c:103:54: error: request for member ‘target_pos’ in something not a structure or union
+  103 |           ratio = get_ratio(0, blit.size_dest.x, blit.target_pos.x);
+      |                                                      ^
+../../display/blit.c:104:19: error: request for member ‘is_x_reverse’ in something not a structure or union
+  104 |           if (blit.is_x_reverse)
+      |                   ^
+../../display/blit.c:106:15: error: request for member ‘src_pos’ in something not a structure or union
+  106 |           blit.src_pos.x = get_value(0, src->clipable.clip_width, ratio);
+      |               ^
+../../display/blit.c:107:15: error: request for member ‘src_pos’ in something not a structure or union
+  107 |           blit.src_pos.x += src->clipable.clip_x_position;
+      |               ^
+../../display/blit.c:108:59: error: request for member ‘src_pos’ in something not a structure or union
+  108 |           npos = get_npos(src->clipable.buffer.width, blit.src_pos);
+      |                                                           ^
+../../display/blit.c:109:15: error: request for member ‘final_pos’ in something not a structure or union
+  109 |           blit.final_pos.x = blit.target_pos.x + blit.shift.x;
+      |               ^
+../../display/blit.c:109:34: error: request for member ‘target_pos’ in something not a structure or union
+  109 |           blit.final_pos.x = blit.target_pos.x + blit.shift.x;
+      |                                  ^
+../../display/blit.c:109:54: error: request for member ‘shift’ in something not a structure or union
+  109 |           blit.final_pos.x = blit.target_pos.x + blit.shift.x;
+      |                                                      ^
+../../display/blit.c:110:15: error: request for member ‘final_pos’ in something not a structure or union
+  110 |           blit.final_pos.y = blit.target_pos.y + blit.shift.y;
+      |               ^
+../../display/blit.c:110:34: error: request for member ‘target_pos’ in something not a structure or union
+  110 |           blit.final_pos.y = blit.target_pos.y + blit.shift.y;
+      |                                  ^
+../../display/blit.c:110:54: error: request for member ‘shift’ in something not a structure or union
+  110 |           blit.final_pos.y = blit.target_pos.y + blit.shift.y;
+      |                                                      ^
+../../display/blit.c:117:33: error: request for member ‘final_pos’ in something not a structure or union
+  117 |           set_pixel(target, blit.final_pos, col);
+      |                                 ^
+../../display/blit.c:118:37: error: request for member ‘is_x_reverse’ in something not a structure or union
+  118 |           x_is_end = set_is_end(blit.is_x_reverse, &blit.target_pos.x, blit.size_dest.x);
+      |                                     ^
+../../display/blit.c:118:57: error: request for member ‘target_pos’ in something not a structure or union
+  118 |           x_is_end = set_is_end(blit.is_x_reverse, &blit.target_pos.x, blit.size_dest.x);
+      |                                                         ^
+../../display/blit.c:118:76: error: request for member ‘size_dest’ in something not a structure or union
+  118 |           x_is_end = set_is_end(blit.is_x_reverse, &blit.target_pos.x, blit.size_dest.x);
+      |                                                                            ^
+../../display/blit.c:120:33: error: request for member ‘is_y_reverse’ in something not a structure or union
+  120 |       y_is_end = set_is_end(blit.is_y_reverse, &blit.target_pos.y, blit.size_dest.y);
+      |                                 ^
+../../display/blit.c:120:53: error: request for member ‘target_pos’ in something not a structure or union
+  120 |       y_is_end = set_is_end(blit.is_y_reverse, &blit.target_pos.y, blit.size_dest.y);
+      |                                                     ^
+../../display/blit.c:120:72: error: request for member ‘size_dest’ in something not a structure or union
+  120 |       y_is_end = set_is_end(blit.is_y_reverse, &blit.target_pos.y, blit.size_dest.y);
+      |                                                                        ^
+make: *** [Makefile:26: ../../display/blit.o] Error 1
