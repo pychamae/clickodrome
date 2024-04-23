@@ -1,20 +1,20 @@
-#include    <stddef.h>
+#include                "vector.h"
 
-void        *efmemcpy(void        *dest,
-                      const void  *src,
-                      size_t      n)
+void                    *efmemcpy(void           *trg,
+                                  const void     *src,
+                                  size_t         size)
 {
-    char    *c_dest;
-    char    *c_src;
-    size_t  i;
+    char                *trgt;
+    char                *sr;
+    size_t              i;
 
-    c_dest = (char *) dest;
-    c_src = (char *) src;
     i = 0;
-    while (i < n)
+    trgt = (char*)trg;
+    sr = (char*)src;
+    while (i < size)
         {
-            c_dest[i] = c_src[i];
-            i += 1;
+            trgt[i] = sr[i];
+            i ++;
         }
-    return(dest);
+    return (trg);
 }

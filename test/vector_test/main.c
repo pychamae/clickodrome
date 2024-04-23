@@ -1,104 +1,44 @@
-#include	<stdio.h>
-#include        "vector.h"
-#include        <stdlib.h>
-#include        <string.h>
-#include        <unistd.h>
+#include                "vector.h"
 
-int main(void)
+int                     main()
 {
-    /*    t_vector        *test;
-    t_vector        *test_projection;
-    int             tab[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    size_t          i;
+    t_vector            *vec;
+    int                 data[10] = {1,2,4,8,16,32,64,128,256,512};
+    int                 i = 0;
+    t_vector            *vect;
 
-    test = _efvector_new(sizeof(int), 10);
-    i = 0;
+    vec = efvector_new(int, 10);
+    printf("Taille d’un element = %ld\nCapacité en element = %ld\nNombre d’éléments contenu = %ld\nis_view est %d\n", \
+           vec->sizeof_data, vec->array_capacity, vec->data_count, vec->is_view);
+    printf("\nle nombre d'element supprimer est clear = %ld\n", \
+           efvector_clear(vec));
+    printf("\nle nombre d'element supprimer avec delete est = %ld\n",   \
+           efvector_delete(vec));
+    vec = efvector_new(0, 10);
     while (i < 10)
         {
-            efvector_push(test, (void *)&tab[i]);
-            i += 1;
+            efvector_push(vec, &data[i]);
+            printf("le nombre a la position %d est %d   implementer avec push\n", \
+                   i, ((int*)vec->data_array)[i]);
+            i ++;
         }
-    i = 0;
-    while (i < test->data_count)
+    i = 10;
+    putchar('\n');
+    while (i > 5)
         {
-            dprintf(1, "Elem n°%d : %d(/%d)\n", i, *efvector_at(test, i, int), test->data_count);
-            if ((i + 1) != *efvector_at(test, i, int))
-                dprintf(1, "\nErreur !!\n");
-            i += 1;
+            efvector_pop_back(vec);
+            printf("le nombre a la position %ld est %d   supprimer avec pop_back\n", \
+                   vec->data_count, ((int*)vec->data_array)[vec->data_count]);
+            i --;
         }
-    efvector_pop_back(test);
-    i = 0;
-    while (i < test->data_count)
-        {
-            dprintf(1, "Elem n°%d : %d(/%d)\n", i, *efvector_at(test, i, int), test->data_count);
-            if ((i + 1) != *efvector_at(test, i, int))
-                dprintf(1, "\nErreur !!\n");
-            i += 1;
-        }
-    test_projection = efvector_view(test, 5, 4);
-    i = 0;
-    while (i < test_projection->data_count)
-        {
-            dprintf(1, "projection n°%d : %d(/%d)\n",
-                        i, *efvector_at(test_projection, i, int), test->data_count);
-            if ((i + 1) != *efvector_at(test, i, int))
-                dprintf(1, "\nErreur !!\n");
-            i += 1;
-        }
-    dprintf(1, "Projection supprimé : %d\n", efvector_delete(test_projection));
-    dprintf(1, "test supprimé : %d\n", efvector_delete(test));
-    */
-    t_vector            *test;
-    t_vector            *colum1;
-    t_vector            *colum2;
-    t_vector            *colum3;
-    char                *text;
-
-    text = malloc(sizeof(char) * 10);
-    test = _efvector_new(sizeof(t_vector), 3);
-    colum1 = _efvector_new(sizeof(char) * 10, 3);
-    colum2 = _efvector_new(sizeof(char) * 10, 3);
-    colum3 = _efvector_new(sizeof(char) * 10, 3);
-
-    strcpy(text, "02");
-    efvector_push(colum1, text);
-    text[0] = '1';
-    efvector_push(colum2, text);
-    text[0] = '2';
-    efvector_push(colum3, text);
-    text[0] = '3';
-    efvector_push(colum1, text);
-    text[0] = '4';
-    efvector_push(colum2, text);
-    text[0] = '5';
-    efvector_push(colum3, text);
-    text[0] = '6';
-    efvector_push(colum1, text);
-    text[0] = '5';
-    efvector_push(colum2, text);
-    text[0] = '6';
-    efvector_push(colum3, text);
-    text[0] = '0';
-
-    efvector_push(test, colum1);
-    efvector_push(test, colum2);
-    efvector_push(test, colum3);
-
-    for (int y = 0; y < 3; ++y)
-        {
-            for (int x = 0; x < 3; ++x)
-                {
-                    dprintf(1, "%s", efvector_at(efvector_at(test, x, t_vector), y * 10, char));
-                    if (x + 1 != 3)
-                        write(1, ",", 1);
-                }
-            if (y + 1 != 3)
-                write(1, "\n", 1);
-        }
-
-    efvector_delete(test);
-    efvector_delete(colum1);
-    efvector_delete(colum2);
-    efvector_delete(colum3);
-    free(text);
+    efvector_pop(vec, 3);
+    printf("\nla valeur a la position %d est %d\n", 3, efvector_at(vec, 3, int));
+    vect = efvector_view(vec, 2, 2);
+    printf("0 = %d 1 = %d\n",efvector_at(vect, 0, int), \
+           efvector_at(vect, 1, int));
+    printf("\nle nombre d'element supprimer avec delete est = %ld\n",   \
+           efvector_delete(vect));
+    printf("\nle nombre d'element supprimer avec delete est = %ld\n",   \
+           efvector_delete(vec));
 }
+

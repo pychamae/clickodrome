@@ -4,14 +4,11 @@ SRC =			vector/main.c			\
 			vector/clear.c			\
 			vector/delete.c			\
 			vector/new.c			\
-			vector/pop_back.c		\
+			vector/pop.c			\
 			vector/push.c			\
-			vector/realloc.c		\
 			vector/view.c			\
 			vector/memcpy.c			\
-			vector/new_view.c		\
-			vector/init_new_vector.c	\
-			vector/get_data.c		\
+			vector/pop_index.c		\
 
 OBJS =			$(SRC:.c=.o)
 
