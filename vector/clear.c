@@ -1,13 +1,10 @@
-#include            "vector.h"
-#include            <stdlib.h>
+#include                "vector.h"
 
-size_t              efvector_clear(t_vector     *vec)
+size_t                  efvector_clear(t_vector         *vec)
 {
-    size_t          len;
+    size_t              size;
 
-    len = vec->data_count;
-    if (vec->is_view)
-        return(0);
+    size = vec->data_count;
     vec->data_count = 0;
-    return (len);
+    return (size);
 }

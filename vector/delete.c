@@ -1,13 +1,15 @@
-#include        "vector.h"
-#include        <stdlib.h>
+#include                "vector.h"
 
-size_t          efvector_delete(t_vector        *vec)
+size_t                  efvector_delete(t_vector            *vec)
 {
-    size_t      del_elem;
+    size_t              size;
 
-    del_elem = efvector_clear(vec);
+    size = vec->data_count;
+    if (vec == NULL)
+        return (0);
     if (vec->is_view == false)
         free(vec->data_array);
     free(vec);
-    return(del_elem);
+    vec = NULL;
+    return (size);
 }
