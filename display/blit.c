@@ -1,4 +1,4 @@
-#include		"blit.h"
+#include		"draw.h"
 
 static void             init_struct(const t_bunny_position      *pos,
                                     t_blit			*blit,
@@ -114,7 +114,7 @@ void                    blit(t_bunny_pixelarray			*target,
 	      forcedCol->argb[ALPHA_CMP] = col.argb[ALPHA_CMP];
 	      col.full = forcedCol->full;
 	    }
-          setPixel(target, blit.final_pos, col);
+          set_pixel(target, blit.final_pos, col);
           x_is_end = set_is_end(blit.is_x_reverse, &blit.target_pos.x, blit.size_dest.x);
         }
       y_is_end = set_is_end(blit.is_y_reverse, &blit.target_pos.y, blit.size_dest.y);
