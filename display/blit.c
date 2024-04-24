@@ -74,9 +74,9 @@ static bool             set_is_end(bool                         is_reverse,
   return(false);
 }
 
-void                    blit(t_bunny_pixelarray			*target,
+void                    blit(t_bunny_zpixelarray		*target,
 			     const t_bunny_pixelarray		*src,
-			     const t_bunny_position		*pos,
+			     const t_zposition			*pos,
 			     t_bunny_color			*forcedCol)
 {
   t_blit                blit;
@@ -86,6 +86,7 @@ void                    blit(t_bunny_pixelarray			*target,
   bool                  y_is_end;
   bool                  x_is_end;
   t_bunny_color		col;
+  t_zposition		zpos;
 
   init_struct(pos, &blit, src);
   tab = (unsigned int*)src->pixels;
@@ -114,7 +115,10 @@ void                    blit(t_bunny_pixelarray			*target,
 	      forcedCol->argb[ALPHA_CMP] = col.argb[ALPHA_CMP];
 	      col.full = forcedCol->full;
 	    }
-          set_pixel(target, blit.final_pos, &col);
+	  zpos.x = blit.final_pos.x;
+	  zpos.y = blit.final_pos.y;
+	  zpos.z = pos->z;
+          set_zpixel(target, &zpos, &col);
           x_is_end = set_is_end(blit.is_x_reverse, &blit.target_pos.x, blit.size_dest.x);
         }
       y_is_end = set_is_end(blit.is_y_reverse, &blit.target_pos.y, blit.size_dest.y);

@@ -7,7 +7,6 @@ void                    efletter(t_bunny_zpixelarray    *pix,
                                  char                   c)
 {
   t_bunny_clipable	tmp;
-  t_bunny_position	posk;
 
   if (pix->z[pos->x + pos->y * pix->px->clipable.buffer.width] > pos->z)
     {
@@ -15,9 +14,7 @@ void                    efletter(t_bunny_zpixelarray    *pix,
       font->clipable.clip_x_position = c * 10;
       font->clipable.clip_y_position = 0;
       font->clipable.clip_width = 10;
-      posk.x = pos->x;
-      posk.y = pos->y;
-      blit(pix->px, font, &posk, col);
+      blit(pix, font, pos, col);
 
       bunny_clipable_copy(&font->clipable, &tmp);
     }

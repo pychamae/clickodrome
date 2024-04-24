@@ -27,9 +27,9 @@ void			draw_rectangle(t_bunny_zpixelarray	*px,
 				       t_zposition		*posStart,
 				       t_zposition		*posEnd,
 				       t_bunny_color		*col);
-void			blit(t_bunny_pixelarray			*target,
+void			blit(t_bunny_zpixelarray		*target,
 			     const t_bunny_pixelarray		*src,
-			     const t_bunny_position		*pos,
+			     const t_zposition			*pos,
 			     t_bunny_color			*forcedCol);
 double			get_ratio(int				a,
 				  int				b,
