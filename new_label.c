@@ -10,13 +10,14 @@ t_label			*efnew_label(t_bunny_zpixelarray	*zpx,
 				     t_bunny_color		*font_color,
 				     t_bunny_color		*bg)
 {
-  t_label		*label;
+  t_bunny_zposition	pos_end;
 
-  label = malloc(sizeof(t_label));
-  label->pos = zpos;
-  label->size = size;
-  label->name = name;
-  label->text = text;
-  label->font_color = font_color;
-  label->bg = bg;
+  if (*font_color != NULL)
+    {
+      pos_end.x = zpos.x + size.x;
+      pos_end.y = zpos.y + size.y;
+      pos_end.z = zpos.z;
+      draw_rectangle(zpx, pos, pos_end, font_color[0]);
+    }
+  eftext(zpx, font, zpos, text);
 }
