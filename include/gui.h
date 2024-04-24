@@ -24,9 +24,10 @@ typedef struct		s_component
 
 typedef struct		s_gui
 {
-  t_vector		*components;
+  t_vector		*components; // ce vecteur devra contenir uniquement des t_component
   t_component		focus_element;
-  t_vector		*divs;
+  t_vector              *libs;  // ce vecteur contenir les liens avec dlsym;
+  t_vector		*divs;  // ce vecteur devra contenir uniquement des t_div
 }			t_gui;
 
 t_gui			*efnew_gui(const char			*file);
@@ -80,13 +81,13 @@ void			efadd_timer_gui(t_gui			*gui,
 					t_div                  *divname,
 				    const char			*name,
 				    t_vector			*functions);
-void efnew_button_gui_cnf(t_bunny_configuration *cnf,
+void                 efnew_button_gui_cnf(t_bunny_configuration *cnf,
 			  t_gui *gui);
-void efnew_label_cnf(t_bunny_configuration *cnf,
+void                      efnew_label_cnf(t_bunny_configuration *cnf,
 		     t_gui *gui);
-void efnew_picture_cnf(t_bunny_configuration *cnf,
+void                    efnew_picture_cnf(t_bunny_configuration *cnf,
 		       t_gui *gui);
-void efnew_text_box_cnf(t_bunny_configuration *cnf,
+void                   efnew_text_box_cnf(t_bunny_configuration *cnf,
 			t_gui *gui);
 
 #endif //		__GUI_H__

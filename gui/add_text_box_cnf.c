@@ -9,7 +9,8 @@ void efnew_text_box_cnf(t_bunny_configuration *cnf,t_gui *gui)
   char *text;
   t_bunny_color color;
   t_bunny_color bg;
-  t_vecteur *function;
+  t_vector *function;
+  t_component comp;
   pos = get_pos_cnf(cnf);
   size = get_size_cnf(cnf);
   bunny_configuration_getf(cnf,&name,"components.name");
@@ -18,13 +19,17 @@ void efnew_text_box_cnf(t_bunny_configuration *cnf,t_gui *gui)
   bg = get_color_cnf(cnf,"font_color");
   bunny_configuration_getf(cnf,&func1,"components.functions[1]");
   bunny_configuration_getf(cnf,&func2,"components.functions[2]");
-  void *(*func_ptr)(char *text);
-  function = efvector_new(func_ptr,0);
+
+  void (*func_ptr)(char *text);
+  function = efvector_new(func_ptr,"buh");
+
   text_box = efnew_text_box(pos,size,name,text,font_color,bg,function);
+  comp.component = &gui->div->text_boxes;
+  comp.type = 1;
   if (text_box == NULL)
     return(NULL);
   efvector_push(gui->div->text_boxes,text_box);
-  efvector_push(gui->components,&gui->div->text_boxes);
+  efvector_push(gui->components,comp);
   efvector_view(gui->div->text_boxes);
   efvector_view(gui->components);
 }

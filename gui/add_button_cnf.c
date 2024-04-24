@@ -10,7 +10,8 @@ void efnew_button_gui_cnf(t_bunny_configuration *cnf,t_gui *gui)
   t_bunny_color color;
   t_bunny_color bg;
   t_bunny_color hover_color;
-  t_vecteur *function;
+  t_component comp;
+  t_vector *function;
   pos = efget_pos_cnf(cnf);
   size = efget_size_cnf(cnf);
   bunny_configuration_getf(cnf,&name,"components.name");
@@ -20,13 +21,22 @@ void efnew_button_gui_cnf(t_bunny_configuration *cnf,t_gui *gui)
   hover_color = efget_color_cnf(cnf,"hover_color");
   bunny_configuration_getf(cnf,&func1,"components.functions[1]");
   bunny_configuration_getf(cnf,&func2,"components.functions[2]");
-  void *(*func_ptr)(char *text);
-  function = efvector_new(func_ptr,0);
+
+
+
+  void (*func_ptr)(void);
+  function = efvector_new(func_ptr,2);
+
+
+
+
   button = efnew_button(pos,size,name,text,font_color,bg,function);
   if (button == NULL)
     return(NULL);
+  comp.component = &gui->div->buttons;
+  comp.type = 0;
   efvector_push(gui->div->buttons,button);
-  efvector_push(gui->components,&gui->div->buttons);
+  efvector_push(gui->components,comp);
   efvector_view(gui->div->buttons);
   efvector_view(gui->components);
 }

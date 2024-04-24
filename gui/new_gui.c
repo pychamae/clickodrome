@@ -21,8 +21,10 @@ t_gui *efnew_gui(const char *file)
       return(NULL);
     }
   i = 0;
+  nbr_components = bunny_configuration_casesf(cnf,"components");
   nbr_divs = bunny_configuration_childrenf(cnf,"[]");
-
+  gui->components = efvector_new(t_component,nbr_components);
+  gui->components = efvector_new(t_div,nbr_divs);
   div = bunny_configuraton_start(cnf);
   while (div != bunny_configuration_end(cnf))
     {

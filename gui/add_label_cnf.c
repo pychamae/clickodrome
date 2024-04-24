@@ -9,6 +9,7 @@ void efnew_label_cnf(t_bunny_configuration *cnf,t_gui *gui)
   char *text;
   t_bunny_color color;
   t_bunny_color bg;
+  t_component comp;
 
   pos = get_pos_cnf(cnf);
   size = get_size_cnf(cnf);
@@ -19,8 +20,10 @@ void efnew_label_cnf(t_bunny_configuration *cnf,t_gui *gui)
   label = efnew_label(pos,size,name,text,font_color,bg);
   if (label == NULL)
     return(NULL);
+  comp.component = &gui->div->labels;
+  comp.type = 2;
   efvector_push(gui->div->labels,label);
-  efvector_push(gui->components,&gui->div->labels);
+  efvector_push(gui->components,comp);
   efvector_view(gui->div->labels);
   efvector_view(gui->components);
 }
