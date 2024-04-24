@@ -1,19 +1,17 @@
 #include "gui.h"
 
-void efnew_button(t_bunny_configuration *cnf,t_gui *gui,int i)
+void efnew_text_box(t_bunny_configuration *cnf,t_gui *gui,int i)
 {
-  t_button *button;
+  t_text_box *text_box;
   t_bunny_position pos;
   t_bunny_size size;
   char *name;
   char *text;
   t_bunny_color color;
   t_bunny_color bg;
-  t_bunny_color hover_color;
   t_vecteur *function;
   bunny_configuration_getf(cnf,&pos.x,"components[i].pos[0]");
   bunny_configuration_getf(cnf,&pos.y,"components[i].pos[1]");
-  bunny_configuration_getf(cnf,&pos.z,"components[i].pos[2]");
   bunny_configuration_getf(cnf,&size.width,"components[i].size[0]");
   bunny_configuration_getf(cnf,&size.height,"components[i].size[1]");
   bunny_configuration_getf(cnf,&name,"components[i].name");
@@ -31,12 +29,11 @@ void efnew_button(t_bunny_configuration *cnf,t_gui *gui,int i)
   bunny_configuration_getf(cnf,&func2,"components[i].functions[2]");
   void *(*func_ptr)(char *text);
   function = efvector_new(func_ptr,0);
-  button = efnew_button(pos,size,name,text,font_color,bg,function);
-  if (button == NULL)
+  text_box = efnew_text_box(pos,size,name,text,font_color,bg,function);
+  if (text_box == NULL)
     return(NULL);
-  efvector_push(gui->div->buttons,button);
-  efvector_push(gui->components,&gui->div->buttons);
-  efvector_view(gui->div->buttons);
+  efvector_push(gui->div->text_boxes,text_box);
+  efvector_push(gui->components,&gui->div->text_boxes);
+  efvector_view(gui->div->text_boxes);
   efvector_view(gui->components);
 }
-
