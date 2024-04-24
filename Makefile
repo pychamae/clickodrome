@@ -14,7 +14,7 @@ OBJS =			$(SRC:.c=.o)
 
 INCLUDE =		-I./include
 
-CC =			gcc
+CC =			bcc
 
 FLAGS =			-Wall -Wextra -g
 
@@ -41,6 +41,7 @@ re: fclean all
 
 test: fclean
 			cd test/vector_test/ ; make report
+			cd test/draw/ ; make report
 
 tree: fclean
 			tree

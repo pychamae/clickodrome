@@ -1,5 +1,7 @@
+#include		"draw.h"
+
 static void             init_struct(const t_bunny_position      *pos,
-                                    ef::t_blit                  *blit,
+                                    t_blit			*blit,
                                     const t_bunny_pixelarray    *src)
 {
   t_bunny_accurate_position     scale;
@@ -72,10 +74,10 @@ static bool             set_is_end(bool                         is_reverse,
   return(false);
 }
 
-void                    ef::blit(t_bunny_pixelarray             *target,
-                                 const t_bunny_pixelarray       *src,
-                                 const t_bunny_position         *pos,
-				 t_bunny_color			*forcedCol)
+void                    blit(t_bunny_pixelarray			*target,
+			     const t_bunny_pixelarray		*src,
+			     const t_bunny_position		*pos,
+			     t_bunny_color			*forcedCol)
 {
   t_blit                blit;
   float                 ratio;
@@ -107,12 +109,12 @@ void                    ef::blit(t_bunny_pixelarray             *target,
           blit.final_pos.x = blit.target_pos.x + blit.shift.x;
           blit.final_pos.y = blit.target_pos.y + blit.shift.y;
 	  col.full = tab[npos];
-	  if (forcedCol != nullptr)
+	  if (forcedCol != NULL)
 	    {
 	      forcedCol->argb[ALPHA_CMP] = col.argb[ALPHA_CMP];
 	      col.full = forcedCol->full;
 	    }
-          setPixel(target, blit.final_pos, col);
+          set_pixel(target, blit.final_pos, col);
           x_is_end = set_is_end(blit.is_x_reverse, &blit.target_pos.x, blit.size_dest.x);
         }
       y_is_end = set_is_end(blit.is_y_reverse, &blit.target_pos.y, blit.size_dest.y);
