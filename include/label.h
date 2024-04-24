@@ -2,9 +2,11 @@
 
 #define			__LABEL_H__
 
+#include		"draw.h"
+
 typedef struct	        s_label
 {
-  t_bunny_position	pos;
+  t_zposition		pos;
   t_bunny_size		size;
   const char		*name;
   const char		*text;
