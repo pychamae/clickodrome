@@ -15,6 +15,8 @@ t_picture		*efnew_picture(t_bunny_position		pos,
 				       const char		*name,
 				       const char		*filename);
 void			efdelete_picture(t_picture		*picture);
+void			efdisplay_picture(t_picture			*picture,
+				      t_bunny_pixelarray	*px);
 
 
 #endif	//		__PICTURE_H__

@@ -24,7 +24,7 @@ t_div			*efnew_div(const char			*name,
 void			efdelete_div(t_div			*div);
 void			efdisplay_div(t_div			*div,
 				      t_bunny_pixelarray	*px);
-void			efadd_button(t_div			*div,
+void			efadd_button_div(t_div			*div,
 				     const char			*name,
 				     t_bunny_position		pos,
 				     t_bunny_size		size,
@@ -33,14 +33,14 @@ void			efadd_button(t_div			*div,
 				     t_bunny_color		*hover_color,
 				     t_bunny_color		*bg,
 				     t_vector		        *functions);
-void			efadd_label(t_div			*div,
+void			efadd_label_div(t_div			*div,
 				    t_bunny_position		pos,
 				    const char			*name,
 				    t_bunny_size		size,
 				    const char			*text,
 				    t_bunny_color		*font_color,
 				    t_bunny_color		*bg);
-void			efadd_text_box(t_div			*div,
+void			efadd_text_box_div(t_div			*div,
 				       const char		*name,
 				       t_bunny_position		pos,
 				       t_bunny_size		size,
@@ -48,12 +48,12 @@ void			efadd_text_box(t_div			*div,
 				       t_bunny_color		*font_color,
 				       t_bunny_color		*bg,
 				       t_vector			*functions);
-void			efadd_picture(t_div			*div,
+void			efadd_picture_div(t_div			*div,
 				      const char		*name,
 				      t_bunny_position		pos,
 				      t_bunny_size		size,
 				      const char		*filename);
-void			efadd_timer(t_div			*div,
+void			efadd_timer_div(t_div			*div,
 				    const char			*name,
 				    t_vector			*functions);
 
