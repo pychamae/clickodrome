@@ -4,7 +4,6 @@
 
 #include		"vector.h"
 #include		"div.h"
-#include		"blit.h"
 
 #include		<lapin.h>
 
@@ -25,7 +24,6 @@ typedef struct		s_component
 
 typedef struct		s_gui
 {
-  const char		*conf_file;
   t_vector		*components;
   t_component		focus_element;
   t_vector		*divs;
@@ -46,15 +44,17 @@ void			efrefresh_gui(t_gui			*gui);
 void			efdisplay_gui(t_gui			*ck,
 				      t_bunny_pixelarray	*px);
 void			efadd_button_gui(t_gui			*gui,
-				     const char			*name,
-				     t_bunny_position		pos,
-				     t_bunny_size		size,
-				     const char			*text,
-				     t_bunny_color		*font_color,
-				     t_bunny_color		*hover_color,
-				     t_bunny_color		*bg,
-				     t_vector		        *functions);
+					 t_div                  *divname,
+					 const char			*name,
+					 t_bunny_position		pos,
+					 t_bunny_size		size,
+					 const char			*text,
+					 t_bunny_color		*font_color,
+					 t_bunny_color		*hover_color,
+					 t_bunny_color		*bg,
+					 t_vector		        *functions);
 void			efadd_label_gui(t_gui			*gui,
+					t_div                  *divname,
 				    t_bunny_position		pos,
 				    const char			*name,
 				    t_bunny_size		size,
@@ -62,6 +62,7 @@ void			efadd_label_gui(t_gui			*gui,
 				    t_bunny_color		*font_color,
 				    t_bunny_color		*bg);
 void			efadd_text_box_gui(t_gui		*gui,
+					   t_div                  *divname,
 				       const char		*name,
 				       t_bunny_position		pos,
 				       t_bunny_size		size,
@@ -70,12 +71,22 @@ void			efadd_text_box_gui(t_gui		*gui,
 				       t_bunny_color		*bg,
 				       t_vector			*functions);
 void			efadd_picture_gui(t_gui			*gui,
+					  t_div                  *divname,
 				      const char		*name,
 				      t_bunny_position		pos,
 				      t_bunny_size		size,
 				      const char		*filename);
 void			efadd_timer_gui(t_gui			*gui,
+					t_div                  *divname,
 				    const char			*name,
 				    t_vector			*functions);
+void efnew_button_gui_cnf(t_bunny_configuration *cnf,
+			  t_gui *gui);
+void efnew_label_cnf(t_bunny_configuration *cnf,
+		     t_gui *gui);
+void efnew_picture_cnf(t_bunny_configuration *cnf,
+		       t_gui *gui);
+void efnew_text_box_cnf(t_bunny_configuration *cnf,
+			t_gui *gui);
 
 #endif //		__GUI_H__

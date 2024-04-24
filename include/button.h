@@ -4,7 +4,7 @@
 
 typedef struct	        s_button
 {
-  t_bunny_position	pos;
+  t_zposition	        pos;
   t_bunny_size		size;
   const char		*name;
   const char		*text;

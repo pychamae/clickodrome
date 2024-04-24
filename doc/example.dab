@@ -1,5 +1,4 @@
-[
-  divName = "div1"
+[div1
   pos = 0, 0, 0 ' x, y, z
   size = 100, 100 ' width, height
   {components
@@ -16,9 +15,8 @@
     ]
   }
 ]
-,
-[
-  divName = "div2"
+
+[div2
   pos = 100, 0, 0
   size = 100, 100
   {components
