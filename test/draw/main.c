@@ -5,6 +5,7 @@
 int			main(void)
 {
   t_bunny_pixelarray	*px;
+  t_bunny_pixelarray	*font;
   t_bunny_window	*win;
   t_bunny_position	posEnd;
   t_bunny_position	posStart;
@@ -35,7 +36,7 @@ int			main(void)
       posEnd.x -= 1;
     }
   i = 0;
-  while (i < 100)
+  while (i < 1000)
     {
       posStart.x = rand() % px->clipable.buffer.width;
       posStart.y = rand() % px->clipable.buffer.height;
@@ -48,4 +49,11 @@ int			main(void)
       usleep(500);
     }
   bunny_delete_clipable(&px->clipable);
+  posStart.x = 0;
+  posStart.y = 0;
+  font = bunny_load_pixelarray("font.png");
+  blit(px, font, &posStart, &color);
+  bunny_blit(&win->buffer, &px->clipable, &origin);
+  bunny_display(win);
+  usleep(5000);
 }
