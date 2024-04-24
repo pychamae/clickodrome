@@ -4,8 +4,8 @@
 
 #include		"vector.h"
 #include		"div.h"
-#include		"blit.h"
-
+#include		"draw.h"
+#include		"label.h"
 #include		<lapin.h>
 
 typedef	enum		e_type

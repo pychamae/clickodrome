@@ -1,13 +1,22 @@
 #include		"draw.h"
 
-void		        draw_rectangle(t_bunny_pixelarray	*px,
-				       t_bunny_position		posStart,
-				       t_bunny_position		posEnd,
-				       t_bunny_color		col)
+void		        draw_rectangle(t_bunny_zpixelarray	*px,
+				       t_zposition		*posStart,
+				       t_zposition		*posEnd,
+				       t_bunny_color		*col)
 {
-  t_bunny_position	drawPos;
+  t_zposition		drawPos;
 
-  for (drawPos.y = posStart.y; drawPos.y < posEnd.y; drawPos.y += 1)
-    for (drawPos.x = posStart.x; drawPos.x < posEnd.x; drawPos.x += 1)
-      set_pixel(px, drawPos, col);
+  drawPos.y = posStart->y;
+  while (drawPos.y < posEnd->y)
+    {
+      drawPos.x = posStart->x;
+      while ( drawPos.x < posEnd->x)
+	{
+	  drawPos.z = posStart->z;
+	  set_zpixel(px, &drawPos, col);
+	  drawPos.x += 1;
+	}
+      drawPos.y += 1;
+    }
 }

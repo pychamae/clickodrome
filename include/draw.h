@@ -1,48 +1,56 @@
-#ifndef		__DRAW_H__
+#ifndef			__DRAW_H__
 
-#define		__DRAW_H__
+#define			__DRAW_H__
 
-#include	<lapin.h>
+#include		<lapin.h>
 
-typedef struct	s_zposition
+typedef struct          s_bunny_zpixelarray
 {
-  int		x;
-  int		y;
-  double	z;
-}		t_zposition
+  t_bunny_pixelarray    *px;
+  double                *z;
+}		        t_bunny_zpixelarray;
 
-void		set_pixel(t_bunny_pixelarray		*px,
-			  t_zposition		pos,
-			  t_bunny_color			col);
-void		set_zpixel(t_bunny_zpixelarray		*px,
-			  t_zposition			pos,
-			  t_bunny_color			col);
-void		draw_rectangle(t_bunny_pixelarray	*px,
-			       t_zposition		posStart,
-			       t_zposition		posEnd,
-			       t_bunny_color		col);
-void		blit(t_bunny_pixelarray			*target,
-		     const t_bunny_pixelarray		*src,
-		     const t_bunny_position		*pos,
-		     t_bunny_color			*forcedCol);
-double		get_ratio(int				a,
-			  int				b,
-			  int				x);
-int		get_value(int				a,
-			  int				b,
-			  double			ratio);
-int		get_npos(int				width,
-			 t_bunny_position		pos);
+typedef struct		s_zposition
+{
+  int			x;
+  int			y;
+  double		z;
+}			t_zposition;
 
-void            efletter(t_bunny_zpixelarray		*pix,
-			 t_bunny_pixelarray		*font,
-			 t_zposition			pos,
-			 char				c);
+void			set_pixel(t_bunny_pixelarray		*px,
+				  t_bunny_position	        pos,
+				  t_bunny_color			*col);
+void			set_zpixel(t_bunny_zpixelarray		*px,
+				   t_zposition			*pos,
+				   t_bunny_color		*col);
+void			draw_rectangle(t_bunny_zpixelarray	*px,
+				       t_zposition		*posStart,
+				       t_zposition		*posEnd,
+				       t_bunny_color		*col);
+void			blit(t_bunny_pixelarray			*target,
+			     const t_bunny_pixelarray		*src,
+			     const t_bunny_position		*pos,
+			     t_bunny_color			*forcedCol);
+double			get_ratio(int				a,
+				  int				b,
+				  int				x);
+int			get_value(int				a,
+				  int				b,
+				  double			ratio);
+int			get_npos(int				width,
+				 t_bunny_position		pos);
 
-void            eftext(t_bunny_zpixelarray		*pix,
-		       t_bunny_pixelarray		*font,
-		       t_zposition			pos,
-		       const char			*str);
+void			efletter(t_bunny_zpixelarray		*pix,
+				 t_bunny_pixelarray		*font,
+				 t_zposition			*pos,
+				 t_bunny_color                  *col,
+				 char				c);
+
+void			eftext(t_bunny_zpixelarray		*pix,
+			       t_bunny_pixelarray		*font,
+			       t_zposition			*pos,
+			       const char			*txt,
+			       t_bunny_color			*font_color);
 
 typedef struct		s_blit
 {
@@ -59,4 +67,4 @@ typedef struct		s_blit
 }			t_blit;
 
 
-#endif //	__DRAW_H__
+#endif //		__DRAW_H__
