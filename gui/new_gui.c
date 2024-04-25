@@ -30,8 +30,8 @@ t_gui *efnew_gui(const char *file)
   while (div != bunny_configuration_end(cnf))
     {
       bunny_configuration_getf(div,&divname,"[]");
-      pos = get_posz_cnf(div);
-      bunny_configuration_getf(div,&size,"size");
+      pos = efget_posz_cnf(div);
+      size = efget_size_cnf(div);
       tdiv = efnew_div(divname,pos,size);
       efvector_push(gui->divs,tdiv);
       j++;
