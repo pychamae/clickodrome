@@ -1,6 +1,6 @@
 #include "gui.h"
 
-void efnew_label_cnf(t_bunny_configuration *cnf,t_gui *gui)
+void efadd_label_cnf(t_bunny_configuration *cnf,t_gui *gui)
 {
   t_label *label;
   t_bunny_position pos;

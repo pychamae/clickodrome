@@ -1,7 +1,10 @@
 #include "gui.h"
 
-void efnew_text_box_cnf(t_bunny_configuration *cnf,t_gui *gui)
+void efadd_text_box_cnf(t_bunny_configuration *cnf,t_gui *gui)
 {
+  int i;
+  int j;
+  i = 0;
   t_text_box *text_box;
   t_bunny_position pos;
   t_bunny_size size;
@@ -17,11 +20,22 @@ void efnew_text_box_cnf(t_bunny_configuration *cnf,t_gui *gui)
   bunny_configuration_getf(cnf,&text,"components.text");
   color = get_color_cnf(cnf,"font_color");
   bg = get_color_cnf(cnf,"font_color");
-  bunny_configuration_getf(cnf,&func1,"components.functions[1]");
-  bunny_configuration_getf(cnf,&func2,"components.functions[2]");
 
-  void (*func_ptr)(char *text);
-  function = efvector_new(func_ptr,"buh");
+  j = bunny_configuration_casesf(cnf,"components.functions");
+
+  if (j > 0)
+    {
+      bunny_configuration_getf(cnf,&lib,"components.functions[0]");
+      link = dlopen(lib, RTLD_NOW); // lib needs to contain path to the library
+    }
+  function = efnew_vector(void (*func_ptr)(char *),j);
+  while (i <  j)
+    {
+      bunny_configuration_getf(cnf,&func,"components.functions[%d]",i);
+      func_ptr = dlsym(link,func);
+      efpush_vector(function,func_ptr);
+      i++;
+    }
 
   text_box = efnew_text_box(pos,size,name,text,font_color,bg,function);
   comp.component = &gui->div->text_boxes;
@@ -30,6 +44,5 @@ void efnew_text_box_cnf(t_bunny_configuration *cnf,t_gui *gui)
     return(NULL);
   efvector_push(gui->div->text_boxes,text_box);
   efvector_push(gui->components,comp);
-  efvector_view(gui->div->text_boxes);
-  efvector_view(gui->components);
+  efvector_push(gui->libs,link);
 }
