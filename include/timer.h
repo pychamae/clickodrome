@@ -2,18 +2,22 @@
 
 #define			__TIMER_H__
 
+#include		<stddef.h>
+#include		"vector.h"
+
 typedef struct	        s_timer
 {
-  const char		*name;
+  size_t		last_time;
+  size_t		delai;
+  char			*name;
   t_vector		*functions;
 }			t_timer;
 
 t_timer		*efnew_timer(const char				*name,
-			     const char				*text,
+			     size_t				delai,
 			     t_vector				*functions);
 void		efdelete_timer(t_timer				*timer);
-void		efdisplay_timer(t_timer				*timer,
-				t_bunny_pixelarray		*px);
+void		efrefresh_timer(t_timer				*timer);
 
 
 #endif	//		__TIMER_H__

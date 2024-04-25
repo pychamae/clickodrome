@@ -1,27 +1,30 @@
-#include            "draw.h"
+#include            "label.h"
 
 void                eftext(t_bunny_zpixelarray		*pix,
                            t_bunny_pixelarray		*font,
-                           t_zposition			pos,
-                           const char			*str)
+			   t_zposition			*pos,
+			   const char			*txt,
+			   t_bunny_color		*font_color)
 {
-    int             i;
-    int             x;
+  int             i;
+  t_zposition	  po;
 
-    x = pos.x;
-    i = 0;
-    while (str[i] != '\0')
-        {
-            if (str[i] == '\n')
-                {
-                    pos.x = x;
-                    pos.y += 15;
-                }
-            else
-                {
-                    efletter(pix, font, pos, str[i]);
-                    pos.x += 12;
-                }
-            i ++;
-        }
+  po.x = pos->x;
+  po.y = pos->y;
+  i = 0;
+  while (txt[i] != '\0')
+    {
+      if (txt[i] == '\n')
+	{
+	  pos->x = po.x;
+	  pos->y += 15;
+	}
+      else
+	{
+	  efletter(pix, font, pos, font_color, txt[i]);
+	  pos->x += 12;
+	}
+      i ++;
+    }
+  *pos = po;
 }

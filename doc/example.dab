@@ -1,5 +1,4 @@
-[
-  divName = "div1"
+[div1
   pos = 0, 0, 0 ' x, y, z
   size = 100, 100 ' width, height
   {components
@@ -12,13 +11,12 @@
       font_color = 255, 255, 255 ' red, blue, green
       bg = 0, 0, 0 ' can not exist
       hover_color = 255, 0, 0 ' can not exist
-      functions = "send.so", "write.so"
+      functions = "send.so", "nomdefonction"
     ]
   }
 ]
 ,
-[
-  divName = "div2"
+[div2
   pos = 100, 0, 0
   size = 100, 100
   {components
@@ -40,7 +38,7 @@
       text = "Write here to comment !"
       font_color = 255, 255, 255
       bg = 0, 0, 0
-      functions = "comment.so"
+      functions = "comment.so","nomdefonction"
     ]
     ,
     [
@@ -55,7 +53,7 @@
       type = "timer"
       name = "timer1"
       delay = 10 ' unit : ms
-      function = "refresh.so"
+      function = "refresh.so","nomdefonction"
     ]
   }
 ]

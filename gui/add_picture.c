@@ -1,4 +1,5 @@
 #include "gui.h"
+
 void			efadd_picture_gui(t_gui			*gui,
 				      const char		*name,
 				      t_bunny_position		pos,
