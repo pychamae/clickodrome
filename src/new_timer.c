@@ -11,13 +11,13 @@ t_timer         *efnew_timer(const char                         *name,
       perror("malloc new_timer");
       return (NULL);
     }
-  if ((time->name = malloc(strlen(txt))) == NULL)
+  if ((time->name = malloc(strlen(name))) == NULL)
     {
       perror("malloc new_timer_name");
       return (NULL);
     }
-  strcpy(time->name, text);
-  time->last_time = bunny_get_current_time();
+  strcpy(time->name, name);
+  time->last_time = bunny_get_current_time() * 1000;
   time->delai = delai;
-  time->function = functions;
+  time->functions = functions;
 }
