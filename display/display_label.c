@@ -1,20 +1,21 @@
 #include		"label.h"
-#include		"draw.h"
 
-void                    efdisplay_label(t_label                 *label,
+void                    efdisplay_label(t_label                 *labelt,
 					t_bunny_zpixelarray     *zpx,
 					t_bunny_pixelarray	*font)
 {
   t_zposition		pos_end;
+  t_label               label;
 
-  if (font_color != NULL)
+  label = *labelt;
+  if (label.bg != NULL)
     {
-      pos_end.x = label->pos.x + label->size.x;
-      pos_end.y = label->pos.y + label->size.y;
-      pos_end.z = label->pos.z;
-      draw_rectangle(zpx, label->pos, pos_end, label->font_color[0]);
+      pos_end.x = label.pos.x + label.size.x;
+      pos_end.y = label.pos.y + label.size.y;
+      pos_end.z = label.pos.z;
+      draw_rectangle(zpx, &label.pos, &pos_end, label.bg);
     }
-  eftext(zpx, font, label->pos, label->text);
-  pos.y -= 12;
-  eftext(zpx, font, label->pos, label->name);
+  eftext(zpx, font, &label.pos, label.text, label.font_color);
+  label.pos.y -= 12;
+  eftext(zpx, font, &label.pos, label.name, label.font_color);
 }
