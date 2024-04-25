@@ -4,6 +4,8 @@
 
 #include		"vector.h"
 #include		"div.h"
+#include		"draw.h"
+#include		"label.h"
 
 #include		<lapin.h>
 

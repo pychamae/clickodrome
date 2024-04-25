@@ -1,20 +1,14 @@
 NAME =			Clickodrome
 
-SRC =			display/main.c				\
-			display/blit.c				\
-			display/delete_label.c			\
-			display/display_label.c			\
-			display/draw_rectangle.c		\
-			display/get_npos.c			\
-			display/get_ratio.c			\
-			display/get_value.c			\
-			display/letter.c			\
-			display/new_label.c			\
-			display/text.c				\
-			display/set_pixel.c			\
-			display/set_zpixel.c			\
-			display/loop_function.c			\
-			display/display_function.c		\
+SRC =			vector/main.c			\
+			vector/clear.c			\
+			vector/delete.c			\
+			vector/new.c			\
+			vector/pop.c			\
+			vector/push.c			\
+			vector/view.c			\
+			vector/memcpy.c			\
+			vector/pop_index.c		\
 
 OBJS =			$(SRC:.c=.o)
 
