@@ -81,13 +81,13 @@ void			efadd_timer_gui(t_gui			*gui,
 					t_div                  *divname,
 				    const char			*name,
 				    t_vector			*functions);
-void                 efnew_button_gui_cnf(t_bunny_configuration *cnf,
+void                 efadd_button_cnf(t_bunny_configuration *cnf,
 			  t_gui *gui);
-void                      efnew_label_cnf(t_bunny_configuration *cnf,
+void                      efadd_label_cnf(t_bunny_configuration *cnf,
 		     t_gui *gui);
-void                    efnew_picture_cnf(t_bunny_configuration *cnf,
+void                    efadd_picture_cnf(t_bunny_configuration *cnf,
 		       t_gui *gui);
-void                   efnew_text_box_cnf(t_bunny_configuration *cnf,
+void                   efadd_text_box_cnf(t_bunny_configuration *cnf,
 			t_gui *gui);
 
 #endif //		__GUI_H__

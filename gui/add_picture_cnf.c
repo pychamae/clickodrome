@@ -1,6 +1,6 @@
 #include "gui.h"
 
-void efnew_picture_cnf(t_bunny_configuration *cnf,t_gui *gui)
+void efadd_picture_cnf(t_bunny_configuration *cnf,t_gui *gui)
 {
   t_picture *picture;
   t_bunny_position pos;

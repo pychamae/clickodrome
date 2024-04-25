@@ -1,3 +1,0 @@
-/// dlopen
-Creates the link with the first argument which needs to be the path to the library use RTLD_LAZY Flag by default on the 2nd argument
-
