@@ -89,5 +89,10 @@ void                    efadd_picture_cnf(t_bunny_configuration *cnf,
 					  t_gui                 *gui);
 void                   efadd_text_box_cnf(t_bunny_configuration *cnf,
 					  t_gui                 *gui);
+t_zposition            efget_posz_cnf(t_bunny_configuration     *cnf);
+t_bunny_color          efget_color_cnf(t_bunny_configuration    *cnf,
+				       char                     *name);
+void                   efget_pos_cnf(t_bunny_configuration      *cnf);
+t_bunny_size           efget_size_cnf(t_bunny_configuration     *cnf);
 
 #endif //		__GUI_H__

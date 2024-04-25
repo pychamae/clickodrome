@@ -4,6 +4,10 @@
 
 #include	"vector.h"
 #include        "draw.h"
+#include        "picture.h"
+#include        "text_box.h"
+#include        "button.h"
+#include        "label.h"
 
 #include	<lapin.h>
 

@@ -7,15 +7,14 @@ t_gui *efnew_gui(const char *file)
   t_bunny_configuration *components;
   t_gui *gui;
   t_div *tdiv;
-  char *divname;
+  const char *divname;
   t_zposition pos;
   t_bunny_size size;
-  char *type;
+  const char *type;
   int i;
   int j;
   int nbr_divs;
   int nbr_components;
-  void *(*func_ptr)(void *text);
   cnf = bunny_open_configuration(file,NULL);
   if (cnf == NULL)
     {
@@ -24,9 +23,9 @@ t_gui *efnew_gui(const char *file)
     }
   nbr_components = bunny_configuration_casesf(cnf,"components");
   nbr_divs = bunny_configuration_childrenf(cnf,"[]");
-  gui->components = _efvector_new(t_vector,nbr_components);
+  gui->components = _efvector_new(sizeof(t_vector),nbr_components);
   gui->components = efvector_new(div,nbr_divs);
-  div = bunny_configuraton_start(cnf);
+  div = bunny_configuration_first(cnf);
   while (div != bunny_configuration_end(cnf))
     {
       bunny_configuration_getf(div,&divname,"[]");
