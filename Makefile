@@ -15,6 +15,9 @@ SRC =			display/main.c				\
 			display/set_zpixel.c			\
 			display/loop_function.c			\
 			display/display_function.c		\
+			src/new_timer.c				\
+			src/refresh_timer.c			\
+			src/delete_timer.c			\
 
 OBJS =			$(SRC:.c=.o)
 

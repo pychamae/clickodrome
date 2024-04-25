@@ -2,6 +2,9 @@
 
 #define			__TIMER_H__
 
+#include		<stddef.h>
+#include		"vector.h"
+
 typedef struct	        s_timer
 {
   size_t		last_time;
