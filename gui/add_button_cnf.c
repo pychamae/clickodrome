@@ -20,7 +20,7 @@ void efadd_button_cnf(t_bunny_configuration *cnf,t_gui *gui)
   void *func_ptr;
   const char *func;
 
-  pos = efget_pos_cnf(cnf);
+  pos = efget_posz_cnf(cnf);
   size = efget_size_cnf(cnf);
   bunny_configuration_getf(cnf,&name,"components.name");
   bunny_configuration_getf(cnf,&text,"components.text");
@@ -39,13 +39,13 @@ void efadd_button_cnf(t_bunny_configuration *cnf,t_gui *gui)
     {
       bunny_configuration_getf(cnf,&func,"components.functions[%d]",i);
       func_ptr = dlsym(link,func);
-      efpush_vector(function,func_ptr);
+      efvector_push(function,func_ptr);
       i++;
     }
 
   efadd_button_gui(gui,name,pos,size,text,&color,&hover_color,&bg,function);
-  comp.component = efvector_at(gui->divs,gui->divs->data_count,t_div)->buttons;
-  comp.type = 0;
+  comp->component = efvector_at(gui->divs,gui->divs->data_count,t_div).buttons;
+  comp->type = 0;
   efvector_push(gui->components,comp);
   efvector_push(gui->libs,link);
 }
